@@ -9,6 +9,9 @@ Welcome to the **To-Do List App**! 🎉 This app allows you to manage your daily
 - **Delete Tasks**: Remove tasks when they are no longer needed.
 - **Persistent Storage**: Your tasks will be saved in a database so they stay with you even after closing the app.
 
-## 🔧 Installation Guide
+## How to use it 
+### visit 
+https://todo.kedalfa.com
 
-### 1. Clone the Repository
+- it is not complete yet!!
+
