@@ -1,37 +1,17 @@
-document.getElementById('task-form').addEventListener('submit', function (event) {
-    event.preventDefault();
-
-    const taskInput = document.getElementById('task');
-    const taskName = taskInput.value.trim();
-
-    if (taskName) {
-        // Call function to add task to the database
-        addTaskToDB(taskName);
-        taskInput.value = ''; // Clear input field
+function deleteTask(id) {
+    if (confirm("Are you sure you want to delete this task?")) {
+        fetch('delete_task.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: `id=${id}`
+        }).then(() => location.reload());
     }
-});
-
-// Function to add a task to the database (PHP request will go here later)
-function addTaskToDB(taskName) {
-    // Placeholder: log the task to console for now
-    console.log('Task added:', taskName);
-    // Add task to the UI list
-    addTaskToUI(taskName);
 }
 
-// Function to add task to the UI (without reloading)
-function addTaskToUI(taskName) {
-    const taskList = document.getElementById('task-list');
-    const li = document.createElement('li');
-    li.textContent = taskName;
-
-    const deleteButton = document.createElement('button');
-    deleteButton.textContent = 'Delete';
-    deleteButton.onclick = function () {
-        li.remove();
-        // Call function to delete task from database
-    };
-
-    li.appendChild(deleteButton);
-    taskList.appendChild(li);
+function markCompleted(id, status) {
+    fetch('mark_completed.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `id=${id}&completed=${status ? 1 : 0}`
+    }).then(() => location.reload());
 }
